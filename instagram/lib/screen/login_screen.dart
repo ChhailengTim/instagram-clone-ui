@@ -61,18 +61,21 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 24,
             ),
             //button login
-            Container(
-              child: const Text("Log in"),
-              width: double.infinity,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: const ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(4),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                child: const Text("Log in"),
+                width: double.infinity,
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                decoration: const ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(4),
+                    ),
                   ),
+                  color: blueColor,
                 ),
-                color: blueColor,
               ),
             ),
             const SizedBox(
@@ -89,14 +92,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text("Don't have an account? "),
                   padding: const EdgeInsets.symmetric(vertical: 8),
                 ),
-                Container(
-                  child: const Text(
-                    "Sign up.",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    child: const Text(
+                      "Sign up.",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                   ),
-                  padding: const EdgeInsets.symmetric(vertical: 8),
                 ),
               ],
             )

@@ -20,6 +20,7 @@ class _SignupScreen extends State<SignupScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _bioController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
+  Uint8List? _image;
   @override
   void dispose() {
     super.dispose();
@@ -31,6 +32,9 @@ class _SignupScreen extends State<SignupScreen> {
 
   void selectImage() async {
     Uint8List im = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = im;
+    });
   }
 
   @override
@@ -59,11 +63,16 @@ class _SignupScreen extends State<SignupScreen> {
             // circular widget to accept and show our selected file
             Stack(
               children: [
-                const CircleAvatar(
-                  radius: 64,
-                  backgroundImage: NetworkImage(
-                      "https://www.pinkvilla.com/files/styles/amp_metadata_content_image_min_696px_wide/public/blackpink-rose-blinks-truck.jpg?itok=yUdhwENE"),
-                ),
+                _image != null
+                    ? CircleAvatar(
+                        radius: 64,
+                        backgroundImage: MemoryImage(_image!),
+                      )
+                    : const CircleAvatar(
+                        radius: 64,
+                        backgroundImage: NetworkImage(
+                            "https://telummedia.scdn1.secure.raxcdn.com/uploads/cache/news_image_1x1/build/static/images/photos/male-200px.png"),
+                      ),
                 Positioned(
                     bottom: -10,
                     left: 80,
@@ -117,6 +126,7 @@ class _SignupScreen extends State<SignupScreen> {
                   password: _passwordController.text,
                   username: _usernameController.text,
                   bio: _bioController.text,
+                  file: _image!,
                 );
                 print(res);
               },

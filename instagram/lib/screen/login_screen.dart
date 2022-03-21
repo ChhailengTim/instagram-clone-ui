@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:instagram/resources/auth_method.dart';
+import 'package:instagram/screen/home_screen.dart';
 import 'package:instagram/utils/colors.dart';
 import 'package:instagram/utils/utils.dart';
 import 'package:instagram/widgets/text_field_input.dart';
@@ -30,7 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
     String res = await AuthMethods().LoginUser(
         email: _emailController.text, password: _passwordController.text);
     if (res == 'success') {
-      //
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomeScreen()));
     } else {
       showSnackBar(res, context);
     }
@@ -85,7 +87,9 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                 child: _isLoading
                     ? const Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          color: primaryColor,
+                        ),
                       )
                     : const Text("Log in"),
                 width: double.infinity,

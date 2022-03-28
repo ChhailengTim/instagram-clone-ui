@@ -36,7 +36,7 @@ class PostCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          snap["username"],
+                          snap['username'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),

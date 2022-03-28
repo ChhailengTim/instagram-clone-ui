@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:instagram/utils/colors.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({Key? key}) : super(key: key);
+  const PostCard({Key? key, required this.snap}) : super(key: key);
+  final snap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,7 @@ class PostCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 16,
-                  backgroundImage:
-                      NetworkImage("https://wallpaperaccess.com/full/8174.jpg"),
+                  backgroundImage: snap['profImage'],
                 ),
                 Expanded(
                   child: Padding(
@@ -36,7 +36,7 @@ class PostCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "username",
+                          snap["username"],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -84,7 +84,7 @@ class PostCard extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.35,
             width: double.infinity,
             child: Image.network(
-              "https://i2-prod.mirror.co.uk/incoming/article25609246.ece/ALTERNATES/s1200b/0_PUSS-IN-BOOTS.jpg",
+              snap['postUrl'],
               fit: BoxFit.cover,
             ),
           ),

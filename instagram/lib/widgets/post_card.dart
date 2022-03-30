@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/screen/comment_screen.dart';
 import 'package:instagram/utils/colors.dart';
 import 'package:intl/intl.dart';
 
@@ -101,7 +102,11 @@ class PostCard extends StatelessWidget {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => CommentScreen(),
+                  ),
+                ),
                 icon: const Icon(
                   Icons.comment_outlined,
                 ),
